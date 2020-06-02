@@ -1,0 +1,10 @@
+#!/bin/bash
+
+size=$(du $1 | cut -d'/' -f1)
+#echo "Size in bytes: " $size
+sizeMb=$((size/1024))
+echo "Size in MB: " $sizeMb
+
+if [ "$sizeMb" -gt $2 ]; then
+  ./deleteDir.sh /srv/nfs/images $3 
+fi
